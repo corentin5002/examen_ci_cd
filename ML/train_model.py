@@ -44,5 +44,5 @@ print(classification_report(y_test, y_pred))
 print("AUC-ROC:", roc_auc_score(y_test, y_pred))
 
 # Sauvegarde du modèle entraîné
-filename = 'movie_review_classifier.joblib'
+filename = './movie_review_classifier.joblib'
 joblib.dump(model, filename)

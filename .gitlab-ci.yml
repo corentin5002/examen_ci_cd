@@ -1,0 +1,29 @@
+image: python:3.8
+
+stages:
+  - install
+  - test
+  - train
+
+variables:
+  PYTHONUNBUFFERED: "1"
+
+install_dependencies:
+  stage: install
+  script:
+    - pip install -r requirements.txt
+
+run_tests:
+  stage: test
+  script:
+    - python -m unittest discover tests
+
+train_model:
+  stage: train
+  script:
+    - python train_model.py
+  artifacts:
+    paths:
+      - model/
+  only:
+    - master
